@@ -9,7 +9,7 @@ function App() {
         <Header />
         {/* <Home /> */}
         <Login />
-        <Register />
+        {/* <Register /> */}
         </>
     
   )
