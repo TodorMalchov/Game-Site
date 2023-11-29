@@ -1,7 +1,7 @@
 export default function Header(){
     return (
         <header>
-            <h1><a className="home" href="#">Home</a></h1>
+            <h1><a className="home" href="#">GamePulse</a></h1>
             <nav>
                 <a href="#">Catalog</a>
                 <div id="user">

@@ -1,21 +1,23 @@
 export default function Login() {
-    return(
-        <div classname="login-register">
-    <label htmlFor="uname">
-      <b>Username</b>
-    </label>
-    <input type="text" placeholder="Enter Username" name="uname" required="" />
-    <label htmlfor="psw">
-      <b>Password</b>
-    </label>
-    <input
-      type="password"
-      placeholder="Enter Password"
-      name="psw"
-      required=""
-    />
-    <button type="submit">Login</button>
+  return (
+    <section className="login-page">
+      <form action="">
+        <h1>Login</h1>
+        <div className="input-box">
+          <input type="email" id="email" name="email" placeholder="Email" />
+        </div>
+        <div className="input-box">
+          <input type="password" name="password" id="password" placeholder="Password"/>
+        </div>
+        
+        <button type="submit" className="btn">Login</button>
 
-  </div>
-    )
+        <div className="register-link">
+          <p>Don't have an account? <a href="#">Register</a></p>
+        </div>
+      </form>
+
+      
+    </section>
+  )
 }
