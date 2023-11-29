@@ -1,6 +1,7 @@
 export default function Login() {
   return (
-    <section className="login-page">
+    <div className="border">
+    <section className="login-register-page">
       <form action="">
         <h1>Login</h1>
         <div className="input-box">
@@ -12,12 +13,11 @@ export default function Login() {
         
         <button type="submit" className="btn">Login</button>
 
-        <div className="register-link">
+        <div className="create-login-link">
           <p>Don't have an account? <a href="#">Register</a></p>
         </div>
       </form>
-
-      
     </section>
+    </div>
   )
 }
