@@ -1,19 +1,19 @@
+import { Link } from "react-router-dom"
 export default function Header(){
     return (
         <header>
-            <h1><a className="home" href="#">GamePulse</a></h1>
+            <h1><Link className="home" to="/">GamePulse</Link></h1>
             <nav>
-                <a href="#">Catalog</a>
+                <Link to="/forum">Forum</Link>
                 <div id="user">
-                    <a href="#">Add Game</a>
-                    <a href="#">Logout</a>
-                    <a href="#">Special Game</a>
+                    <Link to="/create">Add to forum</Link>
+                    <Link to="#">Logout</Link>
+                    <Link to="#">Special Game</Link>
                 </div>
                 <div id="guest">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
                 </div>
             </nav>
         </header>
-    )
-}
+    )}
