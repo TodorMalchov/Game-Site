@@ -1,27 +1,27 @@
 #catalog-page {
-    background-color: transparent;
-    box-shadow: 0px 0px 40px 0px;
+    background-color: rgba(119, 78, 143, 0.74);
+    box-shadow: 0px 0px 30px 0px;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 20px;
     height: auto;
-    width: 900px;
+    width: 600px;
 }
 
 #catalog-page>h1 {
     color: #fff;
-    font-family: "Agency FB";
+    font-family: 'Lucida Console', sans-serif;
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 700px;
     margin-top: 10px;
-    text-transform: uppercase;
     text-align: center;
 }
 
 .allGames {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    top: 1cm;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.075);
     display: flex;
     max-width: 100%;
     margin: 15px;
@@ -40,34 +40,35 @@
 .allGames-info>img {
     margin-top: -10px;
     border-radius: 50%;
-    height: 140px;
+    height: 90px;
+    width: 90px;
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 5px;
+    right: -5px;
     float: right;
     padding: 5px;
-    width: 140px;
 }
 
 .allGames-info>h6 {
     font-size: 20px;
-    font-weight: 750;
+    font-weight: 550;
     color: #161618;
 }
 
 .allGames-info>h2 {
     font-size: 20px;
-    font-weight: 750;
+    font-weight: 450;
     color: #161618;
 }
 
 .details-button {
-    background-color: #2A265F;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    background-color: #736dcc;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.315);
     color: #fff;
     font-size: 20px;
     position: absolute;
-    bottom: 30px;
+    bottom: 0px;
+    border-radius: 20px;
     text-align: left;
     letter-spacing: 1px;
     padding: 10px;

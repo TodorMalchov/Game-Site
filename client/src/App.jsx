@@ -5,7 +5,7 @@ import Home from "./components/home/Home"
 import Login from "./components/login/Login"
 import Register from "./components/register/Register"
 import ForumList from './components/game-list/ForumList'
-import GameCreate from "./components/create-game/CreateGame"
+import ForumCreate from "./components/create-game/ForumCreate"
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/forum' element={<ForumList/>} />
-          <Route path='/create' element={<GameCreate/>} />
+          <Route path='/create' element={<ForumCreate/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
         </Routes>

@@ -2,7 +2,7 @@
 
 //import * as gameService from '../../services/gameService';
 
-export default function GameCreate() {
+export default function ForumCreate() {
     // const navigate = useNavigate();
 
     // const createGameSubmitHandler = async (e) => {
@@ -41,7 +41,6 @@ export default function GameCreate() {
                 </div>
 
                 <button type="submit" className="btn">Submit</button>
-
 
             </form>
         </section>
