@@ -1,47 +1,50 @@
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
-import * as gameService from '../../services/gameService';
+//import * as gameService from '../../services/gameService';
 
 export default function GameCreate() {
-    const navigate = useNavigate();
-    
-    const createGameSubmitHandler = async (e) => {
-        e.preventDefault();
+    // const navigate = useNavigate();
 
-        const gameData = Object.fromEntries(new FormData(e.currentTarget));
+    // const createGameSubmitHandler = async (e) => {
+    //     e.preventDefault();
 
-        try {
-            await gameService.create(gameData);
+    //     const gameData = Object.fromEntries(new FormData(e.currentTarget));
 
-            navigate('/games');
-        } catch (err) {
-            // Error notification
-            console.log(err);
-        }
-    }
+    //     try {
+    //         await gameService.create(gameData);
+
+    //         navigate('/games');
+    //     } catch (err) {
+    //         // Error notification
+    //         console.log(err);
+    //     }
+    // }
 
     return (
-        <section id="create-page" className="auth">
-            <form id="create" onSubmit={createGameSubmitHandler}>
-                <div className="container">
-                    <h1>Create Game</h1>
-                    <label htmlFor="leg-title">Legendary title:</label>
-                    <input type="text" id="title" name="title" placeholder="Enter game title..." />
 
-                    <label htmlFor="category">Category:</label>
-                    <input type="text" id="category" name="category" placeholder="Enter game category..." />
+        <section className="create">
+            <form id="create-form">
+                <h1>Add to forum</h1>
+                <div className="input-box">
 
-                    <label htmlFor="levels">MaxLevel:</label>
-                    <input type="number" id="maxLevel" name="maxLevel" min="1" placeholder="1" />
+                    <label htmlFor="gamer-name">Username:</label>
+                    <input type="text" id="username" name="username" />
 
-                    <label htmlFor="game-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
+                    <label htmlFor="imageUrl">Image:</label>
+                    <input type="text" name="imageUrl" id="imageUrl" />
 
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary"></textarea>
-                    <input className="btn submit" type="submit" value="Create Game" />
+                    <label htmlFor="fav-games">Favorite Games:</label>
+                    <input type="text" name="fav-games" id="fav-games" />
+
+                    <label htmlFor="about-you">Description:</label>
+                    <input type="text" name="description" id="description" />
                 </div>
+
+                <button type="submit" className="btn">Submit</button>
+
+
             </form>
         </section>
-    );
+
+    )
 }
