@@ -1,7 +1,7 @@
- import { useEffect, useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import {getAll} from '../../service/forumService';
 
+import ForumItems from './forum-items/ForumItems'
 
 export default function ForumList() {
 
@@ -15,7 +15,11 @@ export default function ForumList() {
     console.log(forum)
     return (
         <section id="catalog-page">
-            <div className="allGames">
+
+            {forum.map(form => (
+                <ForumItems {...form}/>
+            ))}
+            {/* <div className="allGames">
                 <div className="allGames-info">
                     <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" />
                     <h6>Username</h6>
@@ -40,7 +44,7 @@ export default function ForumList() {
                     <h2>Action, Fantasy, Comedy, Some more genre, And more, i nekakvi drugi igri</h2>
                     <a className="details-button">Read More</a>
                 </div>
-            </div>
+            </div> */}
                 
         </section>
     );
