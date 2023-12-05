@@ -1,46 +1,48 @@
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-//import * as gameService from '../../services/gameService';
+import {create} from '../../service/forumService';
 
 export default function ForumCreate() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    // const createGameSubmitHandler = async (e) => {
-    //     e.preventDefault();
+    const createForumPostHandler = async(e) => {
+        e.preventDefault()
 
-    //     const gameData = Object.fromEntries(new FormData(e.currentTarget));
+        const forumData = Object.fromEntries(new FormData(e.currentTarget))
 
-    //     try {
-    //         await gameService.create(gameData);
+        console.log(forumData)
 
-    //         navigate('/games');
-    //     } catch (err) {
-    //         // Error notification
-    //         console.log(err);
-    //     }
-    // }
+        try {
+            await create(forumData)
+            navigate('/forum')
+        } catch (error) {
+            throw new alert('Bad Request')
+        }
+
+
+    }
 
     return (
 
         <section className="create">
-            <form id="create-form">
+            <form id="create-form" onSubmit={createForumPostHandler}>
                 <h1>Add to forum</h1>
                 <div className="input-box">
 
                     <label htmlFor="gamer-name">Username:</label>
-                    <input type="text" id="username" name="username" />
+                    <input type="text" id="username" name="username" required/>
 
                     <label htmlFor="imageUrl">Image:</label>
-                    <input type="text" name="imageUrl" id="imageUrl" />
+                    <input type="text" name="imageUrl" id="imageUrl" required/>
 
-                    <label htmlFor="fav-games">Favorite Games:</label>
-                    <input type="text" name="fav-games" id="fav-games" />
+                    <label htmlFor="favGames">Favorite Games:</label>
+                    <input type="text" name="favGames" id="favGames" required/>
 
                     <label htmlFor="about-you">Description:</label>
-                    <input type="text" name="description" id="description" />
+                    <input type="text" name="description" id="description" required/>
+                    <input type="submit" className="btn" value="Submit" />
                 </div>
 
-                <button type="submit" className="btn">Submit</button>
 
             </form>
         </section>

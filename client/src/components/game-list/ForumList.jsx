@@ -1,16 +1,18 @@
-// import { useEffect, useState } from 'react';
+ import { useEffect, useState } from 'react';
 
-// import * as gameService from '../../services/gameService';
-// import GameListItem from './game-list-item/GameListItem';
+import {getAll} from '../../service/forumService';
+
 
 export default function ForumList() {
-    // const [games, setGames] = useState([]);
 
-    // useEffect(() => {
-    //     gameService.getAll()
-    //         .then(result => setGames(result));
-    // }, []);
+    const [forum,setForum] = useState([])
 
+    useEffect(()=>{
+        getAll()
+            .then(result => setForum(result))
+    },[])
+
+    console.log(forum)
     return (
         <section id="catalog-page">
             <div className="allGames">
