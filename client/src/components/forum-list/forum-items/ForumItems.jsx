@@ -1,7 +1,9 @@
-import { useState,useEffect } from "react";
-import { getAll } from "../../../service/forumService";
+// import { useState,useEffect } from "react";
+// import { getAll } from "../../../service/forumService";
+import { Link } from "react-router-dom";
 
 export default function GameListItem({
+    _id,
     username,
     favGames,
     imageUrl,
@@ -13,7 +15,7 @@ export default function GameListItem({
             <img src={imageUrl} />
             <h6>{username}</h6>
             <h2>{favGames}</h2>
-            <a className="details-button">Read More</a>
+            <Link to={`/forum/${_id}`} className="details-button">Read More</Link>
         </div>
     </div>
     );
