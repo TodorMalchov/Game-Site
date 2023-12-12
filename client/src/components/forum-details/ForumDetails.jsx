@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { getOneComment } from "../../service/forumService"
+import {commentService} from "../../service/commentService"
 
 export default function ForumDetails(){
     const {forumId} = useParams()
@@ -12,6 +14,21 @@ export default function ForumDetails(){
     }, [forumId]);
 //game-details = post-details
 //game-header = post-header
+
+const commentHandler = async(e) =>{
+    e.preventDefault()
+
+    const commentData = new FormData(e.currentTarget)
+
+   const createComment = await commentService(
+        forumId, 
+        commentData.get('username'),
+        commentData.get('comment')
+    )
+    return Object.values(createComment)
+    
+}
+
     return (
         <section id="post-details">
             <div className="info-section">
@@ -27,16 +44,12 @@ export default function ForumDetails(){
                 {/* <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {comments.map(({ _id, username, text }) => (
-                            <li key={_id} className="comment">
-                                <p>{username}: {text}</p>
+                        
+                            <li className="comment">
+                                <p></p>
                             </li>
-                        ))}
+                    
                     </ul>
-
-                    {comments.length === 0 && (
-                        <p className="no-comment">No comments.</p>
-                        )}
                 </div> */}
 
                 
@@ -46,14 +59,14 @@ export default function ForumDetails(){
                 </div> */}
             </div>
 
-            {/* <article className="create-comment">
+            <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form" onSubmit={addCommentHandler}>
+                <form className="form" onSubmit={commentHandler}>
                     <input type="text" name="username" placeholder="username" />
                     <textarea name="comment" placeholder="Comment......"></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
-            </article> */}
+            </article>
         </section>
     );
 }
