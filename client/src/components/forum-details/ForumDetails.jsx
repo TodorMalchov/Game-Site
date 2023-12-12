@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getOneComment } from "../../service/forumService"
-import {commentService} from "../../service/commentService"
+import * as commentService from "../../service/commentService"
 
 export default function ForumDetails(){
     const {forumId} = useParams()
-    const [toForum, setToForum] = useState([]);
+    const [toForum, setToForum] = useState({})
+    const [comments, setComment]= useState([])
 
     useEffect(() => {
         getOneComment(forumId)
-            .then(setToForum);
+            .then(setToForum)
+
+        commentService.getComments()
+            .then(setComment)
     }, [forumId]);
 //game-details = post-details
 //game-header = post-header
@@ -20,12 +24,12 @@ const commentHandler = async(e) =>{
 
     const commentData = new FormData(e.currentTarget)
 
-   const createComment = await commentService(
+   const createComment = await commentService.postComment(
         forumId, 
         commentData.get('username'),
         commentData.get('comment')
     )
-    return Object.values(createComment)
+    return createComment
     
 }
 
@@ -38,19 +42,20 @@ const commentHandler = async(e) =>{
                    
                     <p className="type">{toForum.favGames}</p>
                 </div>
-
                 <p className="text">{toForum.description}</p>
 
-                {/* <div className="details-comments">
+                <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        
+                        {comments.map(({username, text}) => (
+
                             <li className="comment">
-                                <p></p>
+                                <p>{username}: {text}</p>
                             </li>
-                    
+                        ))}
+                        
                     </ul>
-                </div> */}
+                </div>
 
                 
                 {/* <div className="buttons">

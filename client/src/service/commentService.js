@@ -1,11 +1,17 @@
 import {request} from '../service/requests'
 import constants from './constants.js'
 
-export const commentService = async(forumId,username,text)=>{
-    const postComment = await request('POST',constants.commentURL,{
+export const getComments = async() =>{
+    const result = await request('GET',constants.commentURL)
+
+    return Object.values(result)
+}
+
+export const postComment = async(forumId,username,text)=>{
+    const createComment = await request('POST',constants.commentURL,{
         forumId,
         username,
         text
     })
-    return postComment
+    return createComment
 }
