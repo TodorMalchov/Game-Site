@@ -1,11 +1,12 @@
 import { Routes, Route} from 'react-router-dom'
 
-import Header from "./components/header/Header"
-import Home from "./components/home/Home"
-import Login from "./components/login/Login"
-import Register from "./components/register/Register"
+import Header from './components/header/Header'
+import Home from './components/home/Home'
+import Login from './components/login/Login'
+import Register from './components/register/Register'
 import ForumList from './components/forum-list/ForumList'
-import ForumCreate from "./components/create-forum/ForumCreate"
+import ForumCreate from './components/create-forum/ForumCreate'
+import ForumDetails from './components/forum-details/ForumDetails'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/create' element={<ForumCreate/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
+          <Route path='/forum/:forumId' element={<ForumDetails/>} />
         </Routes>
     </div>
     
