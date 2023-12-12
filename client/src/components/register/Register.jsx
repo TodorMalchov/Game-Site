@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 export default function Register() {
     return (
         <div className="border">
         <section className="login-register-page">
           <form action="">
-            <h1>Register</h1>
+            <h1>REGISTER</h1>
             <div className="input-box">
               <input type="email" id="email" name="email" placeholder="Email" />
             </div>
@@ -17,7 +18,7 @@ export default function Register() {
             <button type="submit" className="btn">Register</button>
     
             <div className="create-login-link">
-              <p>If you already have profile click <a href="#">Login</a></p>
+              <p>If you already have profile click <Link to="/login">Login</Link></p>
             </div>
           </form>
         </section>

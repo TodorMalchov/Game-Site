@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 export default function Login() {
   return (
     <div className="border">
     <section className="login-register-page">
       <form action="">
-        <h1>Login</h1>
+        <h1>LOGIN</h1>
         <div className="input-box">
           <input type="email" id="email" name="email" placeholder="Email" />
         </div>
@@ -14,7 +15,7 @@ export default function Login() {
         <button type="submit" className="btn">Login</button>
 
         <div className="create-login-link">
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>Don't have an account? <Link to="/register">Register</Link></p>
         </div>
       </form>
     </section>
