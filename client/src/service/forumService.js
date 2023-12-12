@@ -7,7 +7,7 @@ export const getAll = async()=>{
 }
 
 export const getOneComment = async(forumId)=>{
-    const respose = await request('GET', `http://localhost:3030/jsonstore/forum/01b4aa7d-2046-4cb6-9b7e-cf3d11f71135`)
+    const respose = await request('GET', constants.forumURL+`${forumId}`)
     return respose
 }
 
