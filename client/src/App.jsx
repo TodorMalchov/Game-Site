@@ -1,4 +1,5 @@
 import { Routes, Route} from 'react-router-dom'
+import { useState } from 'react'
 
 import Header from './components/header/Header'
 import Home from './components/home/Home'
@@ -10,7 +11,11 @@ import ForumDetails from './components/forum-details/ForumDetails'
 
 
 function App() {
- 
+  const [auth, setAuth]= useState({})
+
+  const loginSubmitHandler = (values) =>{
+    console.log(values)
+  }
   return (
     <div id='box'>
       
@@ -19,7 +24,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/forum' element={<ForumList/>} />
           <Route path='/create' element={<ForumCreate/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler}/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/forum/:forumId' element={<ForumDetails/>} />
         </Routes>
