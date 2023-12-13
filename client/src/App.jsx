@@ -1,5 +1,9 @@
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route, useNavigate, } from 'react-router-dom'
 import { useState } from 'react'
+
+import AuthContext from './contexts/authContext'
+import * as userService from './service/userService'
+import Path from './path'
 
 import Header from './components/header/Header'
 import Home from './components/home/Home'
@@ -11,12 +15,17 @@ import ForumDetails from './components/forum-details/ForumDetails'
 
 
 function App() {
+  const navigate = useNavigate()
   const [auth, setAuth]= useState({})
 
-  const loginSubmitHandler = (values) =>{
-    console.log(values)
+  const loginSubmitHandler = async(values) =>{
+    const result = await userService.login(values.email, values.password)
+    setAuth(result)
+    navigate(Path.Home)
   }
   return (
+      <AuthContext.Provider value={{loginSubmitHandler}}>
+
     <div id='box'>
       
       <Header /> 
@@ -24,12 +33,13 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/forum' element={<ForumList/>} />
           <Route path='/create' element={<ForumCreate/>} />
-          <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler}/>} />
+          <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register/>} />
           <Route path='/forum/:forumId' element={<ForumDetails/>} />
         </Routes>
     </div>
     
+      </AuthContext.Provider>
   )
 }
 
