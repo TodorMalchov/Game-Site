@@ -29,8 +29,8 @@ const commentHandler = async(e) =>{
         commentData.get('username'),
         commentData.get('comment')
     )
-    return createComment
     
+    setComment(state => [...state, createComment])
 }
 
     return (

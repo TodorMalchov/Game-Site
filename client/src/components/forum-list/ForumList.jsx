@@ -12,7 +12,7 @@ export default function ForumList() {
             .then(result => setForum(result));
     }, []);
 
-    console.log(forum);
+    
     return (
         <section id="catalog-page">
 
