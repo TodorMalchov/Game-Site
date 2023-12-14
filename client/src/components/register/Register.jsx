@@ -1,18 +1,47 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import AuthContext from "../../contexts/authContext"
+import useForm from "../../custom-hooks/useForm"
+import formKeys from "../../service/formKeys"
+
 export default function Register() {
+  const{registerSubmitHandler} = useContext(AuthContext)
+  const{values, onChange, onSubmit}= useForm(registerSubmitHandler,{
+    [formKeys.Email]: '',
+    [formKeys.Password]: '',
+    [formKeys.ConfirmPassword]: ''
+  })
     return (
         <div className="border">
         <section className="login-register-page">
-          <form action="">
+          <form id="register" onSubmit={onSubmit}>
             <h1>REGISTER</h1>
             <div className="input-box">
-              <input type="email" id="email" name="email" placeholder="Email" />
+              <input 
+                type={formKeys.Email} 
+                id={formKeys.Email} 
+                name={formKeys.Email} 
+                placeholder="Email" 
+                onChange={onChange}
+                value={values[formKeys.Email]}/>
             </div>
             <div className="input-box">
-              <input type="password" name="password" id="password" placeholder="Password"/>
+              <input 
+                type={formKeys.Password} 
+                name={formKeys.Password} 
+                id={formKeys.Password} 
+                placeholder="Password" 
+                onChange={onChange}
+                value={values[formKeys.Password]}/>
             </div>
             <div className="input-box">
-              <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm-Password"/>
+              <input 
+                type={formKeys.Password} 
+                name={formKeys.ConfirmPassword} 
+                id={formKeys.ConfirmPassword} 
+                placeholder="Confirm-Password" 
+                onChange={onChange}
+                value={values[formKeys.ConfirmPassword]}/>
             </div>
             
             <button type="submit" className="btn">Register</button>
