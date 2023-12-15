@@ -3,7 +3,7 @@ import { request } from './requests.js'
 
 export const getAll = async()=>{
     const response = await request('GET',constants.forumURL)
-    return Object.values(response)
+    return response
 }
 
 export const getOneComment = async(forumId)=>{

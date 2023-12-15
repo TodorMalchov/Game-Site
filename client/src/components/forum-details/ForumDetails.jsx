@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getOneComment } from "../../service/forumService"
 import * as commentService from "../../service/commentService"
+import AuthContext from "../../contexts/authContext";
 
 export default function ForumDetails(){
+    const {email} = useContext(AuthContext)
     const {forumId} = useParams()
     const [toForum, setToForum] = useState({})
     const [comments, setComment]= useState([])
@@ -13,7 +15,7 @@ export default function ForumDetails(){
         getOneComment(forumId)
             .then(setToForum)
 
-        commentService.getComments()
+        commentService.getComments(forumId)
             .then(setComment)
     }, [forumId]);
 //game-details = post-details
@@ -26,11 +28,10 @@ const commentHandler = async(e) =>{
 
    const createComment = await commentService.postComment(
         forumId, 
-        commentData.get('username'),
         commentData.get('comment')
     )
     
-    setComment(state => [...state, createComment])
+    setComment(state => [...state, {...createComment, owner: {email}}])
 }
 
     return (
@@ -47,10 +48,10 @@ const commentHandler = async(e) =>{
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {comments.map(({username, text}) => (
+                        {comments.map(({_id, text, owner:{email}}) => (
 
-                            <li className="comment">
-                                <p>{username}: {text}</p>
+                            <li key={_id} className="comment">
+                                <p>{email}: {text}</p>
                             </li>
                         ))}
                         
@@ -67,7 +68,6 @@ const commentHandler = async(e) =>{
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={commentHandler}>
-                    <input type="text" name="username" placeholder="username" />
                     <textarea name="comment" placeholder="Comment......"></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
