@@ -9,7 +9,15 @@ export const login = async(email,password)=>{
     return response
 }
 
-export const register = async(forumData)=>{
-    const response = await request('POST',constants.forumURL, forumData)
+export const register = async(email, password)=>{
+    const response = await request('POST',constants.registerUrl, {
+        email,
+        password
+    })
     return response
 }
+
+export const logout = async() => {
+   const result = await request('GET',constants.logoutUrl)
+}
+

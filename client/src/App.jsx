@@ -9,6 +9,7 @@ import Header from './components/header/Header'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
+import Logout from './components/logout/Logout'
 import ForumList from './components/forum-list/ForumList'
 import ForumCreate from './components/create-forum/ForumCreate'
 import ForumDetails from './components/forum-details/ForumDetails'
@@ -16,19 +17,35 @@ import ForumDetails from './components/forum-details/ForumDetails'
 
 function App() {
   const navigate = useNavigate()
-  const [auth, setAuth]= useState({})
+  const [auth, setAuth]= useState(()=>{
+    localStorage.removeItem('accessToken')
+
+    return {}
+  })
 
   const loginSubmitHandler = async(values) =>{
     const result = await userService.login(values.email, values.password)
     setAuth(result)
+    localStorage.setItem('accessToken',result.accessToken)
     navigate(Path.Home)
   }
+
   const registerSubmitHandler = async(values) =>{
-   console.log(values)
+    const result = await userService.register(values.email, values.password)
+    setAuth(result)
+    localStorage.setItem('accessToken', result.accessToken)
+    navigate(Path.Home)
   }
+
+  const logoutHandler = ()=>{
+    setAuth({})
+    localStorage.removeItem('accessToken')
+  }
+
   const values ={
     loginSubmitHandler,
     registerSubmitHandler,
+    logoutHandler,
     username: auth.username,
     email: auth.email,
     isAuthenticated: !!auth.email
@@ -40,11 +57,12 @@ function App() {
       
       <Header /> 
         <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/forum' element={<ForumList/>} />
-          <Route path='/create' element={<ForumCreate/>} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register/>} />
+          <Route path={Path.Home} element={<Home/>} />
+          <Route path={Path.Forum} element={<ForumList/>} />
+          <Route path={Path.Create} element={<ForumCreate/>} />
+          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Register} element={<Register/>} />
+          <Route path='/logout' element={<Logout/>} />
           <Route path='/forum/:forumId' element={<ForumDetails/>} />
         </Routes>
     </div>
