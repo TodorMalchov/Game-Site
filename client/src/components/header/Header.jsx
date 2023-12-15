@@ -15,7 +15,7 @@ export default function Header(){
                 {isAuthenticated &&(
                     <div id="user">
                     <Link to="/create">Add to forum</Link>
-                    <Link to="#">Logout</Link>
+                    <Link to="/logout">Logout</Link>
                     <Link to="#">Special Game</Link>
                 </div>
                 )}

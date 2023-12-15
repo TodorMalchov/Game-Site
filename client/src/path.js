@@ -3,7 +3,8 @@ const Path = {
     Forum: '/forum',
     Create: '/create',
     Login: '/login',
-    Register: '/register'
+    Register: '/register',
+    Logout: '/logout'
 }
 
 export default Path
