@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate, } from 'react-router-dom'
 import { useState } from 'react'
 
-import AuthContext from './contexts/authContext'
+import AuthContext, {AuthProvider} from './contexts/authContext'
 import * as userService from './service/userService'
 import Path from './path'
 
@@ -51,7 +51,7 @@ function App() {
     isAuthenticated: !!auth.email
   }
   return (
-      <AuthContext.Provider value={values}>
+      <AuthProvider value={values}>
 
     <div id='box'>
       
@@ -67,7 +67,7 @@ function App() {
         </Routes>
     </div>
     
-      </AuthContext.Provider>
+      </AuthProvider>
   )
 }
 
