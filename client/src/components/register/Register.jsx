@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { Link } from "react-router-dom"
 import AuthContext from "../../contexts/authContext"
 import useForm from "../../custom-hooks/useForm"
@@ -6,11 +6,12 @@ import formKeys from "../../service/formKeys"
 
 export default function Register() {
   const{registerSubmitHandler} = useContext(AuthContext)
-  const{values, onChange, onSubmit}= useForm(registerSubmitHandler,{
+  const initialValues = useMemo(()=>({
     [formKeys.Email]: '',
     [formKeys.Password]: '',
     [formKeys.ConfirmPassword]: ''
-  })
+  }),[])
+  const{values, onChange, onSubmit}= useForm(registerSubmitHandler,initialValues)
     return (
         <div className="border">
         <section className="login-register-page">

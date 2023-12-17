@@ -3,15 +3,16 @@ import AuthContext from "../../contexts/authContext"
 
 
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 
 export default function Login() {
 
   const {loginSubmitHandler} = useContext(AuthContext)
-  const {values, onChange, onSubmit}= useForm(loginSubmitHandler,{
+  const initialValues = useMemo(()=>({
     email: '',
     password: '',
-  })
+  }),[])
+  const {values, onChange, onSubmit}= useForm(loginSubmitHandler,initialValues)
 
   return (
     <div className="border">
