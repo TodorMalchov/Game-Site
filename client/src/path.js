@@ -1,10 +1,12 @@
 const Path = {
     Home: '/',
     Forum: '/forum',
+    ForumPost: '/forum/:forumId',
     Create: '/create',
     Login: '/login',
     Register: '/register',
-    Logout: '/logout'
+    PostEdit: '/forum/:forumId/edit',
+    Logout: '/logout',
 }
 
 export default Path

@@ -11,6 +11,8 @@ import Logout from './components/logout/Logout'
 import ForumList from './components/forum-list/ForumList'
 import ForumCreate from './components/create-forum/ForumCreate'
 import ForumDetails from './components/forum-details/ForumDetails'
+import ForumPostEdit from './components/forum-post-edit/ForumPostEdit'
+
 
 function App() {
  
@@ -27,7 +29,8 @@ function App() {
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register/>} />
           <Route path={Path.Logout} element={<Logout/>} />
-          <Route path='/forum/:forumId' element={<ForumDetails/>} />
+          <Route path={Path.ForumPost} element={<ForumDetails/>} />
+          <Route path={Path.PostEdit} element={<ForumPostEdit/>} />
         </Routes>
     </div>
     

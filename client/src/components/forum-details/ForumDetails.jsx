@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { getOneComment } from "../../service/forumService"
 import * as commentService from "../../service/commentService"
 import AuthContext from "../../contexts/authContext";
+import Path from "../../path";
 
 export default function ForumDetails(){
-    const {email} = useContext(AuthContext)
+    const {email, userId, isAuthenticated} = useContext(AuthContext)
     const {forumId} = useParams()
     const [toForum, setToForum] = useState({})
     const [comments, setComment]= useState([])
@@ -58,20 +59,27 @@ const commentHandler = async(e) =>{
                     </ul>
                 </div>
 
-                
-                {/* <div className="buttons">
-                <a href="#" className="button">Edit</a>
-                <a href="#" className="button">Delete</a>
-                </div> */}
+                {userId === toForum._ownerId && (
+                    <div className="buttons">
+                <Link to={`/forum/${forumId}/edit`} className="button">Edit</Link>
+                <Link to='' className="button">Delete</Link>
+                </div>
+                    )}
             </div>
-
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form" onSubmit={commentHandler}>
-                    <textarea name="comment" placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-            </article>
+                {isAuthenticated &&(
+                    <article className="create-comment">
+                        <label>Add new comment:</label>
+                        <form className="form" onSubmit={commentHandler}>
+                            <textarea name="comment" placeholder="Comment......"></textarea>
+                            <input className="btn submit" type="submit" value="Add Comment" />
+                        </form>
+                    </article>
+                )}
+                {!isAuthenticated && (
+                    <div className="not-login-text">
+                    <p>Join the conversation: If you haven't spoken up yet, please log in to share your thoughts. New to the discussion? Register and let your voice be heard!</p>
+                    </div>
+                )}
         </section>
     );
 }

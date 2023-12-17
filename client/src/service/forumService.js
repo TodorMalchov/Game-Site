@@ -16,3 +16,8 @@ export const create = async(forumData)=>{
     const response = await request('POST',constants.forumURL, forumData)
     return response
 }
+
+export const edit = async(forumId, forumData)=>{
+    const response = await request('PUT',constants.forumURL+`${forumId}`, forumData)
+    return response
+}
