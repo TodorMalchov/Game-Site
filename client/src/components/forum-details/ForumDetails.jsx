@@ -83,8 +83,8 @@ const deletePostHandler = async()=>{
                     <article className="create-comment">
                         <label>Add new comment:</label>
                         <form className="form" onSubmit={commentHandler}>
-                            <textarea name="comment" placeholder="Comment......"></textarea>
-                            <input className="btn submit" type="submit" value="Add Comment" />
+                            <textarea name="comment" placeholder="Add comment..."></textarea>
+                            <input className="post-button" type="submit" value="Add Comment" />
                         </form>
                     </article>
                 )}
