@@ -7,6 +7,7 @@ const Path = {
     Register: '/register',
     PostEdit: '/forum/:forumId/edit',
     Logout: '/logout',
+    TicTacToe: '/specialGame',
 }
 
 export default Path

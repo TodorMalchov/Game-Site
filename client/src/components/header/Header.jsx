@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import AuthContext from "../../contexts/authContext"
+import Path from "../../path"
 
 export default function Header(){
     const {
@@ -16,7 +17,7 @@ export default function Header(){
                     <div id="user">
                     <Link to="/create">Add to forum</Link>
                     <Link to="/logout">Logout</Link>
-                    <Link to="#">Special Game</Link>
+                    <Link to={Path.TicTacToe}>Tic-Tac-Toe</Link>
                 </div>
                 )}
                 {!isAuthenticated &&(
