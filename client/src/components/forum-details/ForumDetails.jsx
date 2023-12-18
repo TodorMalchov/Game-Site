@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { getOneComment } from "../../service/forumService"
 import * as commentService from "../../service/commentService"
+import * as forumService from "../../service/forumService"
 import AuthContext from "../../contexts/authContext";
 import Path from "../../path";
 
 export default function ForumDetails(){
     const {email, userId, isAuthenticated} = useContext(AuthContext)
+    const navigate = useNavigate()
     const {forumId} = useParams()
     const [toForum, setToForum] = useState({})
     const [comments, setComment]= useState([])
@@ -33,6 +35,17 @@ const commentHandler = async(e) =>{
     )
     
     setComment(state => [...state, {...createComment, owner: {email}}])
+}
+
+const deletePostHandler = async()=>{
+
+    const isSelected = confirm('Are you sure you want to delete this post')
+
+    if(isSelected){
+        await forumService.del(forumId)
+
+        navigate(Path.Forum)
+    }
 }
 
     return (
@@ -62,7 +75,7 @@ const commentHandler = async(e) =>{
                 {userId === toForum._ownerId && (
                     <div className="buttons">
                 <Link to={`/forum/${forumId}/edit`} className="button">Edit</Link>
-                <Link to='' className="button">Delete</Link>
+                <button className="button" onClick={deletePostHandler}>Delete</button>
                 </div>
                     )}
             </div>
