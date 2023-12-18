@@ -2,8 +2,9 @@
 @import "details.css";
 @import "login-register.css";
 @import "create-edit.css";
-@import "welcome.css";
+/* @import "welcome.css"; */
 @import "all-games.css";
 @import "navigation.css";
 @import "comments.css";
 @import "tic-tac-toe.css";
+@import "home.css";

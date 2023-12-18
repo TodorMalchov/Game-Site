@@ -1,8 +1,19 @@
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext"
+
+
 export default function Home() {
+    const { isAuthenticated, email} = useContext(AuthContext)
     return (
-        <div>
-            <h1>In this Website you can see all games who need to play in your life</h1>
-            <h3>If you want to add your favorite game you need to Login/Register</h3>
+        
+        <div className="home-page">
+            {isAuthenticated &&(
+            <h1>Welcome: {email}</h1>
+            )}
+            {!isAuthenticated &&(
+            <h1>Welcome to the largest forum for sharing opinions about video games</h1>
+            )}
+            <img id="image-wrap" src="public/images/fc6.webp"/>
         </div>
     );
 }

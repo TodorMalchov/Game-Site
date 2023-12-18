@@ -43,26 +43,26 @@
 
 .welcome-message h3 {
     color: #ffffff;
-    font-size: 600%;
+    font-size: 100%;
     text-shadow: none;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 100;
     text-align: center;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 100;
     text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.3);
     font-family: "Agency FB";
 }
 
-#welcome-world>#home-page {
+#welcome-world>.home-page {
     width: 50% fit-content;
     margin: auto;
     text-align: center;
 }
 
-#home-page {
+.home-page {
     background-color: transparent;
     box-shadow: 0px 0px 40px 0px;
     overflow: hidden;
@@ -157,7 +157,7 @@
     color: white;
 }
 
-#home-page>h1 {
+.home-page>h1 {
     color: rgb(252, 168, 151);
     text-align: center;
     font-weight: 700;
