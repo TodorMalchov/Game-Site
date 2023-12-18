@@ -12,6 +12,7 @@ import ForumList from './components/forum-list/ForumList'
 import ForumCreate from './components/create-forum/ForumCreate'
 import ForumDetails from './components/forum-details/ForumDetails'
 import ForumPostEdit from './components/forum-post-edit/ForumPostEdit'
+import AuthGuards from './authGuards/AuthGuards'
 
 
 function App() {
@@ -25,12 +26,16 @@ function App() {
         <Routes>
           <Route path={Path.Home} element={<Home/>} />
           <Route path={Path.Forum} element={<ForumList/>} />
-          <Route path={Path.Create} element={<ForumCreate/>} />
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register/>} />
-          <Route path={Path.Logout} element={<Logout/>} />
-          <Route path={Path.ForumPost} element={<ForumDetails/>} />
-          <Route path={Path.PostEdit} element={<ForumPostEdit/>} />
+
+          <Route element={<AuthGuards/>}>
+            <Route path={Path.Create} element={<ForumCreate/>} />
+            <Route path={Path.Logout} element={<Logout/>} />
+            <Route path={Path.ForumPost} element={<ForumDetails/>} />
+            <Route path={Path.PostEdit} element={<ForumPostEdit/>} />
+          </Route>
+          
         </Routes>
     </div>
     
